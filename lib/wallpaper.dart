@@ -24,7 +24,7 @@ class _WallpaperState extends State<Wallpaper> {
               '563492ad6f91700001000001fead046b5c28412cb20719b61dd8fbbf'
         }).then((value) {
       Map result = jsonDecode(value.body);
-      print(result['photos'][0]['src']['original']);
+
       setState(() {
         images = result['photos'];
       });
@@ -47,7 +47,6 @@ class _WallpaperState extends State<Wallpaper> {
       setState(() {
         images.addAll(result['photos']);
       });
-      print((images.length));
     });
   }
 
@@ -75,14 +74,21 @@ class _WallpaperState extends State<Wallpaper> {
                   );
                 }),
           ),
-          Container(
+          InkWell(
+            onTap: () {
+              loadmore();
+            },
+            child: Container(
+              color: Colors.black87,
+              width: double.infinity,
               height: 50,
-              child: TextButton(
-                child: Text('Load More'),
-                onPressed: () {
-                  loadmore();
-                },
-              ))
+              child: Center(
+                  child: Text(
+                'Load More',
+                style: TextStyle(fontSize: 20, color: Colors.white),
+              )),
+            ),
+          )
         ],
       ),
     );
