@@ -22,26 +22,30 @@ class _FullScreenState extends State<FullScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
-      body: Column(children: [
-        Expanded(
-          child: Container(
-              child: Image.network(
-            widget.imageurl,
-          )),
-        ),
-        Container(
-            height: 60,
-            child: TextButton(
-              onPressed: () {
-                setwallpaper();
-              },
-              child: Text(
-                'Set Wallpaper',
-                style: TextStyle(fontSize: 20, color: Colors.white),
+      body: Container(
+          child: Column(
+        children: [
+          Expanded(
+            child: Container(
+              child: Image.network(widget.imageurl),
+            ),
+          ),
+          InkWell(
+            onTap: () {
+              setwallpaper();
+            },
+            child: Container(
+              height: 60,
+              width: double.infinity,
+              color: Colors.black,
+              child: Center(
+                child: Text('Set Wallpaper',
+                    style: TextStyle(fontSize: 20, color: Colors.white)),
               ),
-            ))
-      ]),
+            ),
+          )
+        ],
+      )),
     );
   }
 }
